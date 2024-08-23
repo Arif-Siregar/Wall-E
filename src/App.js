@@ -9,6 +9,19 @@ const AppContainer = styled.div`
   margin-top: 50px;
 `;
 
+const Instructions = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 250px;
+`;
+
 const directions = ['NORTH', 'EAST', 'SOUTH', 'WEST'];
 
 const App = () => {
@@ -17,13 +30,13 @@ const App = () => {
   
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowUp') {
+      if (e.key ===  'ArrowUp') {
         setDirectionIndex(0);
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key ===  'ArrowLeft') {
         setDirectionIndex(3);
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key ===  'ArrowRight') {
         setDirectionIndex(1);
-      } else if (e.key === 'ArrowDown') {
+      } else if (e.key ===  'ArrowDown') {
         setDirectionIndex(2);
       } else if (e.key === ' ') {
         moveForward();
@@ -52,6 +65,16 @@ const App = () => {
 
   return (
     <AppContainer>
+      <Instructions>
+        <h3>Controls</h3>
+        <p>
+          <strong> ↑:</strong> Face Up <br />
+          <strong> ←:</strong> Face Left <br />
+          <strong> →:</strong> Face Right <br />
+          <strong> ↓:</strong> Face Down <br />
+          <strong>Spacebar:</strong> Move one step towards the direction faced
+        </p>
+      </Instructions>
       <h1>Robot Simulator</h1>
       <Grid robotPosition={getRobotPosition()} robotDirection={directions[directionIndex]}/>
     </AppContainer>
